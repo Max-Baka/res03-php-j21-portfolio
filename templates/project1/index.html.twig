@@ -1,0 +1,41 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Project1 index{% endblock %}
+
+{% block body %}
+    <h1>Project1 index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Name</th>
+                <th>Firsttechno</th>
+                <th>Secondtechno</th>
+                <th>Description</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for project1 in project1s %}
+            <tr>
+                <td>{{ project1.id }}</td>
+                <td>{{ project1.Name }}</td>
+                <td>{{ project1.Firsttechno }}</td>
+                <td>{{ project1.Secondtechno }}</td>
+                <td>{{ project1.Description }}</td>
+                <td>
+                    <a href="{{ path('app_project1_show', {'id': project1.id}) }}">show</a>
+                    <a href="{{ path('app_project1_edit', {'id': project1.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="6">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_project1_new') }}">Create new</a>
+{% endblock %}
